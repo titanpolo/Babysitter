@@ -6,7 +6,7 @@
 #instalar:  discord.py: para rodar a API
 #           python-dotenv
 #           requests: somente se quiser realizar acesso da API da binance definida na classe "cryptos.py"
-#           nodemon: opicional, mas agilisa bastante no teste do código (compila auto sempre que salva o projeto)
+#           nodemon: opicional, mas agiliza bastante no teste do código (compila auto sempre que salva o projeto)
 
 
 import discord
