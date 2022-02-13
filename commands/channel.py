@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 class Channels(commands.Cog):
-    """Works with Smart Commands"""
+    """Works with the Channels"""
 
     def __init__(self, client):
         self.client = client
