@@ -4,9 +4,9 @@
 
 #para rodar o bot localmente, deve ser preciso uma aplicação definida anteriormente e ser gerado um token, alem disso deve-se:
 #instalar:  discord.py: para rodar a API
-#           python-dotenv
+#           python-dotenv: para criar variáveis locais e "esconder" o token
 #           requests: somente se quiser realizar acesso da API da binance definida na classe "cryptos.py"
-#           nodemon: opicional, mas agilisa bastante no teste do código (compila auto sempre que salva o projeto)
+#           nodemon: opicional, mas agiliza bastante no teste do código (compila auto sempre que salva o projeto)
 
 
 import discord
@@ -188,21 +188,14 @@ async def on_reaction_add(reaction, user, help="Adiciona usuario na fila"):
 
     embed = msg.embeds[0] #pega o primeiro embed da mensagem, cada mensagem tem uma array de embeds
 
-    print(embed.title)
-
+    #se a mensagem tem um embed de praça, faça
     if i > -1:
         global square_queues
         square = square_queues[i]
-        print(square.field_names[0])
-        print("embed")
         if reaction.emoji == "🟢":
-            print("green")
-            print(user.nick)
+
             square.gold1.append(user.nick)
-            print(square.gold1[0])
-            print(array_to_str(square.gold1))
             embed.set_field_at(0, name=square.field_names[0], value=array_to_str(square.gold1))
-            print("field1")
         elif reaction.emoji == "🔵":
             square.gold2.append(user.nick)
             embed.set_field_at(1, name=square.field_names[1], value=array_to_str(square.gold2))
@@ -232,10 +225,7 @@ async def on_reaction_add(reaction, user, help="Adiciona usuario na fila"):
         i = find_or_not(msg, peak_messages)######################################### futuro pico
         if i < 0: return
         #peak = peak_messages[i]
-
-    print("before await")
     await msg.edit(embed=embed)
-    print("await")
 
 
 #quando uma reação for removida, faça:
