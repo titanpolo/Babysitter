@@ -14,9 +14,21 @@ from discord.ext import commands
 
 import os
 
-import dotenv
 from dotenv import load_dotenv
 load_dotenv()
+
+from discord import DMChannel
+
+class Mir4Bot(commands.Bot):
+    def __init__(self, command_prefix, intents):
+        self.command_prefix = command_prefix
+        self.intents = intents
+        commands.Bot.__init__(self,command_prefix, intents)
+
+        playing = {}
+        waiting = {} ############################################ parei aqui, declarando os atributos da classe gigas
+
+
 
 #from collections import deque # ia usar isso pra fazer lista com manipulações O(1)
 
@@ -32,7 +44,7 @@ client = commands.Bot(".", intents=intents)
 ########### Automação do import de classes
 def load_cogs(client):
     client.load_extension("manager")#carrega a classe manager
-    client.load_extension("tasks.dates")#carrega a classe dates
+    client.load_extension("tasks.timer")#carrega a classe dates
 
     for file in os.listdir("commands"):#carrega todas as classes da pasta commands
         if file.endswith(".py"):
@@ -111,7 +123,6 @@ async def activate_channel(ctx, option):
     if option in ["on", "off"]:
         print(option)
         channel = ctx.channel
-        print(channel)
         if channel in channels:
             if option == "on":
                 await ctx.send("Channel already online!")
@@ -122,7 +133,6 @@ async def activate_channel(ctx, option):
         else:
             if option == "on":
                 channels.append(channel)
-                print("on now")
                 await ctx.send("Channel is now online!")
             else:
                 await ctx.send("Channel already offline!")
@@ -179,6 +189,8 @@ async def on_reaction_add(reaction, user, help="Adiciona usuario na fila"):
     global channels
     msg = reaction.message
 
+    if isinstance(msg.channel, DMChannel):
+        print("Em Obras...")
     if not (msg.channel in channels): return #se o canal nao estiver online
     if user == client.user: return
 
@@ -190,10 +202,10 @@ async def on_reaction_add(reaction, user, help="Adiciona usuario na fila"):
 
     #se a mensagem tem um embed de praça, faça
     if i > -1:
-        global square_queues
+        global square_queues    
         square = square_queues[i]
         if reaction.emoji == "🟢":
-
+            
             square.gold1.append(user.nick)
             embed.set_field_at(0, name=square.field_names[0], value=array_to_str(square.gold1))
         elif reaction.emoji == "🔵":
