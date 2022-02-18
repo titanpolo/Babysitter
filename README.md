@@ -1,5 +1,5 @@
 # Babysitter
-clan manager for discord comunities
+Mir4 clan manager bot for discord communities. Still working on it...
 #Vídeo aula q utilizei para aprender o básico:
 #É altamente recomendado assistir pelo menos o primeiro vídeo para configurar o bot e gerar um TOKEN
 #https://www.youtube.com/watch?v=YWdchyTqt5I
