@@ -10,3 +10,5 @@ Mir4 clan manager bot for discord communities. Still working on it...
 #           python-dotenv: para criar variáveis locais e "esconder" o token
 #           requests: somente se quiser realizar acesso da API da binance definida na classe "cryptos.py"
 #           nodemon: opicional, mas agiliza bastante no teste do código (compila auto sempre que salva o projeto)
+
+# Alternative references: https://www.youtube.com/watch?v=Mm8I_ftfjPs&list=PL6gx4Cwl9DGAHdJdtEl0-XiRfPRAvpbSz
