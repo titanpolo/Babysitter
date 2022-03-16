@@ -25,6 +25,7 @@ class Manager(commands.Cog):
             )
             await message.delete()
         #evitar que o bot trave e os outros comandos parem de funcionar
+        # await client.process_commands(message)
 
     #tratamento de erros, boas práticas, e ajuda (.help)
     @commands.Cog.listener()
